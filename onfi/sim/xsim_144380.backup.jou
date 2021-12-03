@@ -1,0 +1,17 @@
+#-----------------------------------------------------------
+# xsim v2021.2 (64-bit)
+# SW Build 3367213 on Tue Oct 19 02:47:39 MDT 2021
+# IP Build 3369179 on Thu Oct 21 08:25:16 MDT 2021
+# Start of session at: Fri Dec  3 08:10:08 2021
+# Process ID: 144380
+# Current directory: /home/arun/Documents/xilinx/Fpga_repo/onfi/sim
+# Command line: xsim -source {xsim.dir/onfi_sim/xsim_script.tcl}
+# Log file: /home/arun/Documents/xilinx/Fpga_repo/onfi/sim/xsim.log
+# Journal file: /home/arun/Documents/xilinx/Fpga_repo/onfi/sim/xsim.jou
+# Running On: twinSpica, OS: Linux, CPU Frequency: 2800.000 MHz, CPU Physical cores: 16, Host memory: 33573 MB
+#-----------------------------------------------------------
+start_gui
+source xsim.dir/onfi_sim/xsim_script.tcl
+source /home/arun/Documents/xilinx/Fpga_repo/onfi/../scripts/simulate.tcl
+add_wave onfi_tb
+close_sim
