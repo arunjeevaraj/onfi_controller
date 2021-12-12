@@ -14,7 +14,7 @@ The ONFI memory controller is abstracted into PHY and MEM_CTRL, for the sake of 
 
 ## Host interface support
 The ONFI compliant flash controller is designed to be integrated with a RISCV SoC, and the processor can configure and access all the registers using the Avilion Wishbone interface with single write and read accesses. A DMA interface is used to stream the Raw DATA that needs to be written or read from the flash media into the external SRAM. A data stream bus with valid/ready handshake is used initially. 
-![dut_design_top](./onfi_controller/spec/figs/hoste_interface.png). 
+![dut_host_interface](./onfi_controller/spec/figs/hoste_interface.png). 
 
 
 ## Nand Media Phy support
@@ -48,6 +48,11 @@ The SDR has the following bus states defined.
 |  0               | 0               |  0                 | 0         | 1     | Data input cycle           |
 |  0               | 0               |  0                 | 1         | 0     | Data output cycle          |
 |  0               | 1               |  1                 | X         | X     | Undefined                  |
+
+
+## Test environment and Verification
+A directed verilog based testbench is used to verify the functionality initially. 
+![test environment](./onfi_controller/spec/figs/test_bench.png). 
 ## Make commands to run.
 - `make lint` - runs lint tool with verilator
 - `make sim_vivado/onfi_tb.v` - creates the simulation snapshot, compiles the verilog sources and run the simulation in vivado with waveform. 
