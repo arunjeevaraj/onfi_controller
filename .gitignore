@@ -28,6 +28,10 @@
 !*.dcp
 !*.vds
 !*.pb
+!*.jou
+!*.pb
+!*.txt
+!*.mem
 #All bd comments and layout coordinates are stored within .ui
 !*.ui
 !*.ooc
