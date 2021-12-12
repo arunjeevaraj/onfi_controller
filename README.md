@@ -7,14 +7,14 @@ A flash memory is organized into many Logic Units as shown in the figure. Each L
 
 
 ## Architecture
-Architecture details to be added
+The ONFI memory controller is abstracted into PHY and MEM_CTRL, for the sake of modularity. The MEM CTRL host the command fifo, that allows for accepting and scheduling multiple commands from the host. The MEM_CTRL then send the necessary info into the PHY layer, which then drives the signals to the Flash media. 
+
 
 
 
 ## Host interface support
-The Host can configure the controller by using the Avilion wishbone interface, for single write and read accesses. A DMA interface is used to stream the Raw DATA files that needs to be written or read from the flash media. 
-
-
+The ONFI compliant flash controller is designed to be integrated with a RISCV SoC, and the processor can configure and access all the registers using the Avilion Wishbone interface with single write and read accesses. A DMA interface is used to stream the Raw DATA that needs to be written or read from the flash media into the external SRAM. A data stream bus with valid/ready handshake is used initially. 
+![dut_design_top](./onfi_controller/spec/figs/hoste_interface.png). 
 
 
 ## Nand Media Phy support
