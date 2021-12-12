@@ -3,7 +3,7 @@ Flash memory has become the mainstream choice of storage for todays’ data driv
 memory controllers and flash media.    
   
 A flash memory is organized into many Logic Units as shown in the figure. Each Logic unit can contain 2 planes, each with a page register, and constitute of blocks, which are the smallest units of data, which can be erased at time in the flash memory. Each block contains pages, which are the smallest addressable units that can be programed or read at a time.  
-![dut_design_top](./onfi/spec/figs/flash_memory_strutcture.png).   
+![dut_design_top](./onfi_controller/spec/figs/flash_memory_strutcture.png).   
 
 
 ## Architecture
