@@ -1,3 +1,10 @@
+/*
+* Author: Arun Jeevaraj
+* Date: Dec 7 2021
+* Description: Test bench, Drives the wishbone interface, with single read and write accesses.!  
+*/
+
+
 `timescale 1ns/1ps
 
 module onfi_tb();
@@ -8,6 +15,8 @@ reg clk = 1'b0;
 
 localparam MM_DATA_W = 32;
 localparam MM_ADDR_W = 8;
+localparam DMA_DATA_WIDTH = 8;
+
 
 //tb master mm wishbone interface
 reg mm_clk_o;           // wishbone interface clock
@@ -20,12 +29,22 @@ reg[MM_ADDR_W - 1:0] mm_addr_o; // address
 reg[MM_DATA_W - 1:0] mm_dat_o;  // data_written out
 wire[MM_DATA_W - 1:0] mm_dat_i;  // data_read in
 
-
 reg mm_we_o;             // write enable
 wire mm_ack_i;          // termination to the data
 wire mm_err_i;
 
 //tb streaming interface for raw data.
+reg data_in_valid;  // data going into flash controller.
+wire data_in_ready; // data_in ready back pressure
+reg[DMA_DATA_WIDTH-1:0] data_in; // data going into the Controller.
+
+wire data_out_valid; // data going out of the flash controller.
+wire[DMA_DATA_WIDTH-1:0] data_out; // data going out of the controller.
+reg data_out_ready; // test bench back pressure. active high to back pressure.
+
+
+reg[DMA_DATA_WIDTH-1:0] tb_stream_data_in[0:8*1024];
+reg[DMA_DATA_WIDTH-1:0] tb_stream_data_out[0:8*1024];
 
 
 

@@ -20,7 +20,9 @@ module onfi_reg #(parameter MM_DATA_W = 32, MM_ADDR_W = 8)
 
 // mm_wishbone handler.
 
-localparam[2:0] state_idle = 3'b000, state_valid = 3'b001, state_error = 3'b011 ;
+localparam[2:0] state_idle = 3'b000,
+                state_valid = 3'b001,
+                state_error = 3'b011 ;
 reg[2:0] c_state;
 reg[2:0] n_state;
 
@@ -59,6 +61,7 @@ end
 assign mm_ack_o = (c_state == state_valid && valid_mm_rqst)? 1'b1 : 0;
 assign mm_err_o = (c_state == state_error && valid_mm_rqst)? 1'b1 : 0; 
 assign mm_dat_o =  valid_mm_rqst ? data_read : 0;
+assign control_out = command_reg;
 
 //assign addr_mm_rqst = mm_addr_i; //valid_mm_rqst ? mm_addr_i : 0;
 //assign data_mm_rqst = mm_dat_i; //valid_mm_rqst ? mm_dat_i : 0;
@@ -87,7 +90,6 @@ always @(*) begin
     endcase
 end
 
-
 always @(*) begin
     
     data_read = 32'h0;
@@ -113,8 +115,11 @@ always @(*) begin
             command_reg_w = (mm_we_i && valid_mm_rqst) ? data_mm_rqst : command_reg;
         end
         default: begin
+            
         end
     endcase
 end
 
 endmodule
+
+
